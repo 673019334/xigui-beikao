@@ -13,7 +13,7 @@
   <text x="130" y="150" text-anchor="middle" fill="#3b5bbf" font-size="18" font-weight="700">IT治理基础</text>
   <text x="250" y="128" fill="#1A1B1C" font-size="16" font-weight="700">· IT审计目标</text>
   <text x="250" y="154" fill="#1A1B1C" font-size="14">与业务目标一致、有效利用信息与数据资源、</text>
-  <text x="250" y="178" fill="#1A1B1C" font-size="14">风险管理 <tspan fill="#D64545" font-weight="700">【口诀:治校风】</tspan></text>
+  <text x="250" y="178" fill="#1A1B1C" font-size="14">风险管理 <tspan fill="#D64545" font-weight="700">【口诀:治理风险】</tspan></text>
   <text x="250" y="210" fill="#1A1B1C" font-size="16" font-weight="700">· 管理层次</text>
   <text x="250" y="236" fill="#1A1B1C" font-size="14">最高管理层、执行管理层、业务与服务执行层</text>
 
@@ -25,7 +25,7 @@
   <text x="250" y="340" fill="#1A1B1C" font-size="14">IT治理域、IT治理标准、IT绩效目标</text>
   <text x="250" y="370" fill="#1A1B1C" font-size="16" font-weight="700">· 核心内容</text>
   <text x="250" y="396" fill="#1A1B1C" font-size="14">风险管理、资源管理、组织职责、价值交付、</text>
-  <text x="250" y="420" fill="#1A1B1C" font-size="14">战略匹配、绩效管理 <tspan fill="#D64545" font-weight="700">【口诀:疯子租架战机】</tspan></text>
+  <text x="250" y="420" fill="#1A1B1C" font-size="14">战略匹配、绩效管理 <tspan fill="#D64545" font-weight="700">【口诀:疯子扭架成机】</tspan></text>
 
   <!-- ③ IT治理任务 -->
   <rect x="40" y="430" width="180" height="78" rx="12" fill="#E9F7F2" stroke="#94D8C3" stroke-width="1.5"/>
@@ -59,10 +59,10 @@
   <text x="130" y="925" text-anchor="middle" fill="#b55a2a" font-size="17" font-weight="700">方法与技术</text>
   <text x="250" y="886" fill="#1A1B1C" font-size="16" font-weight="700">· 审计方法</text>
   <text x="250" y="912" fill="#1A1B1C" font-size="14">访谈法、调查法、检查法、观察法、测试法、</text>
-  <text x="250" y="936" fill="#1A1B1C" font-size="14">程序代码检查法 <tspan fill="#D64545" font-weight="700">【口诀:访调检观测程序】</tspan></text>
+  <text x="250" y="936" fill="#1A1B1C" font-size="14">程序代码检查法 <tspan fill="#D64545" font-weight="700">【口诀:访调查观测程序】</tspan></text>
   <text x="250" y="964" fill="#1A1B1C" font-size="16" font-weight="700">· 审计技术</text>
   <text x="250" y="990" fill="#1A1B1C" font-size="14">风险评估技术、审计抽样技术、计算机辅助审</text>
-  <text x="250" y="1014" fill="#1A1B1C" font-size="14">计技术、大数据审计技术 <tspan fill="#D64545" font-weight="700">【口诀:风审计大】</tspan></text>
+  <text x="250" y="1014" fill="#1A1B1C" font-size="14">计技术、大数据审计技术 <tspan fill="#D64545" font-weight="700">【口诀:风险审计大】</tspan></text>
   <text x="250" y="1042" fill="#1A1B1C" font-size="16" font-weight="700">· 审计工作底稿</text>
   <text x="250" y="1068" fill="#1A1B1C" font-size="14">综合类 / 业务类 / 备查类工作底稿</text>
   <text x="250" y="1092" fill="#1A1B1C" font-size="14">【口诀:综业备】</text>
