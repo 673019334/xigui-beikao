@@ -5,171 +5,202 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>【系规案例论文】理论必背知识点</title>
     <style>
+        * { box-sizing: border-box; }
         body {
-            font-family: 'Microsoft YaHei', sans-serif; 
-            max-width: 800px; 
-            margin: 0 auto; 
-            padding: 20px; 
-            line-height: 1.6; 
-        } 
-        h1 { 
-            color: #2c3e50; 
-            text-align: center; 
-        } 
-        .control-panel { 
-            background-color: #f8f9fa; 
-            padding: 15px; 
-            border-radius: 5px; 
-            margin-bottom: 20px; 
-        } 
-        button { 
-            background-color: #3498db; 
-            color: white; 
-            border: none; 
-            padding: 8px 15px; 
-            border-radius: 4px; 
-            cursor: pointer; 
-            margin-right: 10px; 
-        } 
-        button:hover { 
-            background-color: #2980b9; 
-        } 
-        button:disabled { 
-            background-color: #95a5a6; 
-            cursor: not-allowed; 
-        } 
-        .question-container {
-            padding: 15px;
-            background-color: #e8f4f8;
-            border-radius: 5px;
-            margin-top: 20px;
-            border: 1px solid #d1e7f5;
+            font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', 'Segoe UI', sans-serif;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 18px 16px 40px;
+            line-height: 1.7;
+            background: linear-gradient(165deg, #eef3ff 0%, #f7f9fd 45%, #ecf8f4 100%);
+            min-height: 100vh;
+            color: #2b3245;
         }
-        #questionDisplay{
-            font: 1.1em sans-serif;
-            font-weight: 500;
+        h1 {
+            text-align: center;
+            font-size: 22px;
+            color: #1f2b45;
+            margin: 10px 0 4px;
+            letter-spacing: 1px;
         }
-        .answer-section {
-            margin-top: 15px;
-            padding: 15px;
-            background-color: #f5f9fc;
-            border-radius: 5px;
-            border: 1px solid #d1e7f5;
+        .subtitle {
+            text-align: center;
+            color: #8a94a6;
+            font-size: 13px;
+            margin: 0 0 18px;
         }
-        #userAnswer { 
-            width: 90%;
-            padding: 12px;
-            margin-top: 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 16px;
-            min-height: 100px;
-            transition: border-color 0.3s;
-        } 
-        #userAnswer:focus {
-            border-color: #4c6fef;
+        .control-panel {
+            background: #ffffff;
+            padding: 16px;
+            border-radius: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 8px 28px rgba(31, 45, 80, 0.09);
+            border: 1px solid rgba(31, 45, 80, 0.05);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+        }
+        button {
+            background: linear-gradient(135deg, #4c6ef5, #3b5bdb);
+            color: #fff;
+            border: none;
+            padding: 9px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+            box-shadow: 0 3px 10px rgba(59, 91, 219, 0.25);
+        }
+        button:hover { transform: translateY(-1px); filter: brightness(1.06); box-shadow: 0 6px 16px rgba(59, 91, 219, 0.32); }
+        button:active { transform: translateY(1px); }
+        button:disabled { background: #c6ccd8; box-shadow: none; cursor: not-allowed; transform: none; filter: none; }
+        #resetBtn { background: #eef1f7; color: #5a6478; box-shadow: none; }
+        #resetBtn:hover { background: #e2e7f2; filter: none; }
+        select {
+            padding: 9px 14px;
+            border-radius: 10px;
+            border: 1.5px solid #dbe1ec;
+            background: #f8faff;
+            font-size: 14px;
+            color: #2b3245;
             outline: none;
-            box-shadow: 0 0 0 2px rgba(74, 107, 223, 0.2);
+            cursor: pointer;
+            transition: border-color .2s, box-shadow .2s;
+            max-width: 100%;
         }
-        #answerDisplay { 
-            min-height: 80px; 
-            padding: 15px; 
-            background-color: #f0f8e8; 
-            border-radius: 5px; 
-            margin-top: 10px; 
-            display: none; 
-        } 
-        select { 
-            padding: 5px; 
-            margin-right: 10px; 
-        } 
-        .submit-answer-btn { 
-            background-color: #27ae60; 
-        } 
-        .next-question-btn {
-            background-color: #9b59b6;
+        select:focus { border-color: #4c6ef5; box-shadow: 0 0 0 3px rgba(76, 110, 245, 0.15); }
+        .mode-switch { display: inline-flex; gap: 6px; }
+        .mode-btn {
+            background: #eef1f7;
+            color: #5a6478;
+            box-shadow: none;
+            padding: 7px 14px;
+            font-size: 13px;
+            border-radius: 999px;
         }
-        .next-question-btn, .prev-question-btn {
-            background-color: #9b59b6; /* 基础紫色 */
+        .mode-btn:hover { background: #e2e7f2; filter: none; box-shadow: none; transform: none; }
+        .mode-btn.active {
+            background: linear-gradient(135deg, #ff922b, #f76707);
+            color: #fff;
+            box-shadow: 0 3px 10px rgba(247, 103, 7, 0.3);
         }
-
-        .next-question-btn:hover, .prev-question-btn:hover {
-            background-color: #8e44ad; /* 悬停时更深的紫色 */
+        .question-container {
+            background: #ffffff;
+            padding: 18px;
+            border-radius: 16px;
+            margin-top: 0;
+            box-shadow: 0 8px 28px rgba(31, 45, 80, 0.09);
+            border-left: 4px solid #4c6ef5;
         }
-
-        .next-question-btn:active, .prev-question-btn:active {
-            background-color: #7d3c98; /* 点击时的深紫色 */
+        #questionDisplay { font-size: 16px; font-weight: 600; color: #232c40; line-height: 1.85; }
+        .answer-section {
+            margin-top: 14px;
+            padding: 14px;
+            background: #f8fafd;
+            border-radius: 12px;
+            border: 1px solid #e6ebf4;
         }
-        .prev-question-btn {
-            background-color: #9b59b6;
+        #userAnswer {
+            width: 100%;
+            padding: 12px;
+            margin-top: 12px;
+            border: 1.5px solid #dbe1ec;
+            border-radius: 10px;
+            font-size: 15px;
+            min-height: 100px;
+            font-family: inherit;
+            transition: border-color .2s, box-shadow .2s;
+            resize: vertical;
         }
-        .status-info { 
-            margin-top: 10px; 
-            font-size: 0.9em; 
-            color: #7f8c8d; 
-        } 
-        .result-message { 
-            margin-top: 10px; 
-            font-weight: bold; 
-        } 
-        .correct { 
-            color: #27ae60;
-        } 
-        .partial { 
-            color: #f39c12; 
-        } 
-        .incorrect { 
-            color: #e74c3c; 
+        #userAnswer:focus { border-color: #4c6ef5; outline: none; box-shadow: 0 0 0 3px rgba(76, 110, 245, 0.15); }
+        #answerDisplay {
+            min-height: 80px;
+            padding: 15px;
+            background: linear-gradient(135deg, #f0f9f2, #e7f5ec);
+            border-radius: 12px;
+            margin-top: 12px;
+            border: 1px solid #cde8d5;
+            font-size: 15px;
+            line-height: 1.9;
+            color: #22332a;
         }
+        .status-info {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+            font-size: 13px;
+        }
+        .badge {
+            background: #eef1f7;
+            color: #3a455c;
+            padding: 4px 12px;
+            border-radius: 999px;
+            font-weight: 600;
+        }
+        .badge.primary { background: rgba(76, 110, 245, 0.12); color: #3b5bdb; }
+        .badge.success { background: rgba(64, 192, 110, 0.14); color: #178a4c; }
+        .badge.warn { background: rgba(255, 146, 43, 0.14); color: #e8590c; }
+        .result-message { margin-top: 12px; font-weight: bold; font-size: 14px; }
+        .correct { color: #1c9d57; }
+        .partial { color: #e8590c; }
+        .incorrect { color: #e03131; }
         .accuracy-display {
-            margin-top: 10px;
-            font-size: 1.1em;
-            color: #4CAF50;
+            margin-top: 12px;
+            font-size: 15px;
+            color: #1c9d57;
             font-weight: bold;
         }
         .progress-container {
             width: 100%;
-            background-color: #f1f1f1;
-            border-radius: 5px;
-            margin-top: 5px;
+            background-color: #f0f2f7;
+            border-radius: 999px;
+            margin-top: 6px;
+            height: 18px;
+            overflow: hidden;
         }
         .progress-bar {
-            height: 20px;
-            border-radius: 5px;
-            background-color: #4CAF50;
+            height: 18px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #69db7c, #40c06e);
             text-align: center;
-            line-height: 20px;
-            color: white;
+            line-height: 18px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+            transition: width .4s ease;
+            min-width: 0;
         }
         .similarity-details {
             margin-top: 10px;
-            font-size: 0.9em;
-            color: #7f8c8d;
+            font-size: 13px;
+            color: #6b7689;
+            background: #f8fafd;
+            border-radius: 10px;
+            padding: 10px 12px;
+            border: 1px dashed #dbe1ec;
         }
-        .mode-switch {
-            display: inline-block;
-            margin-right: 15px;
+        .submit-answer-btn { background: linear-gradient(135deg, #40c06e, #2b9e58); box-shadow: 0 3px 10px rgba(43, 158, 88, 0.25); }
+        .submit-answer-btn:hover { box-shadow: 0 6px 16px rgba(43, 158, 88, 0.32); }
+        .next-question-btn, .prev-question-btn { background: linear-gradient(135deg, #9b59b6, #8e44ad); box-shadow: 0 3px 10px rgba(142, 68, 173, 0.25); }
+        .next-question-btn:hover, .prev-question-btn:hover { box-shadow: 0 6px 16px rgba(142, 68, 173, 0.32); }
+        @media (max-width: 600px) {
+            body { padding: 12px 10px 32px; }
+            h1 { font-size: 18px; }
+            .control-panel { padding: 14px; gap: 8px; }
+            button { padding: 10px 14px; font-size: 14px; }
+            select { font-size: 14px; padding: 9px 10px; }
+            #questionDisplay { font-size: 15px; }
+            .question-container { padding: 15px; }
         }
-        .mode-btn {
-            background-color: #3498db;
-            color: white;
-            border: none;
-            padding: 5px 10px;  /* 修改为更小的内边距 */
-            border-radius: 4px;
-            cursor: pointer;
-            margin-right: 5px;
-            font-size: 12px;    /* 添加更小的字体大小 */
-        }
-        .mode-btn.active {
-            background-color: #f06705;
-            padding: 5px 10px;  /* 保持与普通状态一致 */
-            font-size: 12px;    /* 保持与普通状态一致 */
-        }
-
     </style>
 </head>
 <body>
-<h1>【系规案例论文】理论必背知识点</h1>
+<h1>系规必背 · 默写练习</h1>
+<div class="subtitle">案例论文理论必背知识点 · 每日一练</div>
 <div class="control-panel">
     <select id="chapterSelect">
             <option value="chapter1">必须背</option>
@@ -207,8 +238,9 @@
     <button id="resetBtn">重置</button>
     
     <div class="status-info">
-        已出题: <span id="usedCount">0</span> | 
-        剩余题: <span id="remainingCount">15</span>
+        <span class="badge primary">题库共 <span id="totalCount">0</span> 道题</span>
+        <span class="badge">已出题 <span id="usedCount">0</span></span>
+        <span class="badge success">剩余 <span id="remainingCount">0</span> 道</span>
     </div>
 </div>
 
@@ -1772,6 +1804,7 @@
     const answerDisplay = document.getElementById('answerDisplay');
     const usedCount = document.getElementById('usedCount');
     const remainingCount = document.getElementById('remainingCount');
+    const totalCount = document.getElementById('totalCount');
     const accuracyDisplay = document.getElementById('accuracyDisplay');
     const accuracyValue = document.getElementById('accuracyValue');
     const progressBar = document.getElementById('progressBar');
@@ -1880,6 +1913,7 @@ function getCurrentChapterQuestionCount() {
     resultMessage.textContent = '';
     userAnswer.value = '';
    updateCountDisplay();
+    updateTotalCount();
     sequentialQuestionIndex = 0;
     answerDisplay.style.display = 'none';
     answerDisplay.innerHTML = '';
@@ -1893,6 +1927,23 @@ function getCurrentChapterQuestionCount() {
     }  
 }
 
+
+    // 更新题库总数显示
+    function updateTotalCount() {
+        const selectedChapter = chapterSelect.value;
+        let total = 0;
+        if (selectedChapter === 'all') {
+            // 与出题逻辑一致：全部章节排除"必须背"和"重点背"两个分类
+            for (const chapter in questionBank) {
+                if (chapter !== 'chapter1' && chapter !== 'chapter2') {
+                    total += questionBank[chapter].length;
+                }
+            }
+        } else {
+            total = questionBank[selectedChapter] ? questionBank[selectedChapter].length : 0;
+        }
+        totalCount.textContent = total;
+    }
     // 更新计数显示
     function updateCountDisplay() {
         const counts = getCurrentChapterQuestionCount();
@@ -2149,6 +2200,7 @@ function getCurrentChapterQuestionCount() {
 
   // 章节变更时重置题目状态
 chapterSelect.addEventListener('change', () => {
+    updateTotalCount();
     sequentialQuestionIndex = 0;
     generateBtn.disabled = false;
     // 清空当前题目和答案显示
