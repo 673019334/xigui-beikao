@@ -41,6 +41,7 @@ export default defineConfig({
           items: [
             { text: '章节索引', link: '/recite/' },
             { text: '第11章 信息系统治理', link: '/recite/chapter11' },
+            { text: '第12章 信息系统服务管理', link: '/recite/chapter12' },
             { text: '默写练习工具', link: '/moxie/' }
           ]
         }
