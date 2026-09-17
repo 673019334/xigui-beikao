@@ -187,6 +187,22 @@
         .submit-answer-btn:hover { box-shadow: 0 6px 16px rgba(43, 158, 88, 0.32); }
         .next-question-btn, .prev-question-btn { background: linear-gradient(135deg, #9b59b6, #8e44ad); box-shadow: 0 3px 10px rgba(142, 68, 173, 0.25); }
         .next-question-btn:hover, .prev-question-btn:hover { box-shadow: 0 6px 16px rgba(142, 68, 173, 0.32); }
+        #homeBtn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #eef1f7;
+            color: #3a455c;
+            text-decoration: none;
+            padding: 9px 16px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background .15s ease, transform .15s ease;
+        }
+        #homeBtn:hover { background: #e2e7f2; transform: translateY(-1px); }
+        #hideAnswerBtn { background: #6b7689; }
+        #hideAnswerBtn:hover { background: #5a6478; }
         @media (max-width: 600px) {
             body { padding: 12px 10px 32px; }
             h1 { font-size: 18px; }
@@ -202,6 +218,7 @@
 <h1>系规必背 · 默写练习</h1>
 <div class="subtitle">案例论文理论必背知识点 · 每日一练</div>
 <div class="control-panel">
+    <a href="../" id="homeBtn" target="_top">🏠 回到主页</a>
     <select id="chapterSelect">
             <option value="chapter1">必须背</option>
             <option value="chapter2">重点背</option>
@@ -253,6 +270,7 @@
         <textarea id="userAnswer" rows="4" placeholder="在此输入您的答案..."></textarea>
         <button id="submitAnswerBtn" class="submit-answer-btn">提交答案</button>
         <button id="showAnswerBtn">显示答案</button>
+        <button id="hideAnswerBtn" style="display:none;">隐藏答案</button>
         <button id="prevQuestionBtn" class="prev-question-btn">上一题</button>
         <button id="nextQuestionBtn" class="next-question-btn">下一题</button>
         <div id="resultMessage" class="result-message"></div>
@@ -1907,6 +1925,7 @@ function getCurrentChapterQuestionCount() {
     // 重置显示
     answerInputArea.style.display = 'none';
     answerDisplay.style.display = 'none';
+    hideAnswerBtn.style.display = 'none';
     accuracyDisplay.style.display = 'none';
     similarityDetails.style.display = 'none';
     questionDisplay.innerHTML = '<p>请选择章节并点击"出题"按钮开始</p>';
@@ -2040,8 +2059,10 @@ function getCurrentChapterQuestionCount() {
     questionDisplay.innerHTML = `<p>${currentQuestion.question}</p>`;
     answerInputArea.style.display = 'block';
     answerDisplay.style.display = 'none';
+    hideAnswerBtn.style.display = 'none';
     accuracyDisplay.style.display = 'none';
     similarityDetails.style.display = 'none';
+    hideAnswerBtn.style.display = 'none';
     showAnswerBtn.disabled = false;
     submitAnswerBtn.disabled = false;
     resultMessage.textContent = '';
@@ -2071,6 +2092,7 @@ function getCurrentChapterQuestionCount() {
         submitAnswerBtn.disabled = false;
         resultMessage.textContent = '';
         userAnswer.value = '';
+        hideAnswerBtn.style.display = 'none';
 
         answerDisplay.style.display = 'none';
         answerDisplay.innerHTML = '';
@@ -2091,6 +2113,7 @@ function getCurrentChapterQuestionCount() {
             // 清除正确答案模块
             answerDisplay.style.display = 'none';
             answerDisplay.innerHTML = '';
+            hideAnswerBtn.style.display = 'none';
             generateQuestion();
         }
         // 无论是否提交答案，都启用下一题按钮
@@ -2188,7 +2211,15 @@ function getCurrentChapterQuestionCount() {
         if (!currentQuestion) return;
         answerDisplay.innerHTML = `<p><strong>正确答案：</strong><br>${currentQuestion.answer}</p>`;
         answerDisplay.style.display = 'block';
+        hideAnswerBtn.style.display = '';
         submitAnswerBtn.disabled = true;
+    }
+
+    // 隐藏答案函数
+    function hideAnswer() {
+        answerDisplay.style.display = 'none';
+        hideAnswerBtn.style.display = 'none';
+        submitAnswerBtn.disabled = false;
     }
 
     // 重置函数
@@ -2216,6 +2247,7 @@ chapterSelect.addEventListener('change', () => {
     prevQuestionBtn.addEventListener('click', showPrevQuestion);
     nextQuestionBtn.addEventListener('click', showNextQuestion);
     showAnswerBtn.addEventListener('click', showAnswer);
+    hideAnswerBtn.addEventListener('click', hideAnswer);
     resetBtn.addEventListener('click', reset);
     randomModeBtn.addEventListener('click', () => switchMode('random'));
     sequentialModeBtn.addEventListener('click', () => switchMode('sequential'));
